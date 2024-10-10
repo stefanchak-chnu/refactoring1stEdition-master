@@ -1,4 +1,4 @@
-package example.movie;
+package example.entity.movie;
 
 public abstract class Movie {
     private final String title;

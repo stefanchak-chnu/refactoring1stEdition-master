@@ -1,16 +1,15 @@
-package example.movie;
+package example.entity.movie;
 
-public class HistoryMovie extends Movie {
-
-    public HistoryMovie(String title) {
+public class RegularMovie extends Movie {
+    public RegularMovie(String title) {
         super(title);
     }
 
     @Override
     public double getCharge(int daysRented) {
-        double result = 1;
-        if (daysRented > 3) {
-            result += (daysRented - 3) * 1.5;
+        double result = 2;
+        if (daysRented > 2) {
+            result += (daysRented - 2) * 1.5;
         }
         return result;
     }

@@ -1,4 +1,4 @@
-package example.movie;
+package example.entity.movie;
 
 public class ChildrensMovie extends Movie {
     public ChildrensMovie(String title) {

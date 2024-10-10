@@ -1,6 +1,6 @@
-package example;
+package example.entity;
 
-import example.movie.Movie;
+import example.entity.movie.Movie;
 
 public record Rental(Movie movie, int daysRented) {
 

@@ -1,4 +1,4 @@
-package example.movie;
+package example.entity.movie;
 
 public class NewReleaseMovie extends Movie {
     public NewReleaseMovie(String title) {

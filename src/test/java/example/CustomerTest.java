@@ -1,14 +1,23 @@
 package example;
 
-import example.movie.ChildrensMovie;
-import example.movie.NewReleaseMovie;
-import example.movie.RegularMovie;
+import example.entity.Customer;
+import example.entity.Rental;
+import example.entity.movie.ChildrensMovie;
+import example.entity.movie.NewReleaseMovie;
+import example.entity.movie.RegularMovie;
+import example.service.RentalService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class CustomerTest {
+
+    @Autowired
+    private RentalService rentalService;
 
     private Customer customer;
 
@@ -27,7 +36,7 @@ class CustomerTest {
         String expected = "Rental Record for John Doe\n" +
                 "Amount owed is 0.0\n" +
                 "You earned 0 frequent renter points";
-        assertEquals(expected, customer.buildStatement());
+        assertEquals(expected, rentalService.generateCustomerStatement(customer));
     }
 
     @Test
@@ -37,7 +46,7 @@ class CustomerTest {
                 "\tRegular Movie\t3.5\n" +
                 "Amount owed is 3.5\n" +
                 "You earned 1 frequent renter points";
-        assertEquals(expected, customer.buildStatement());
+        assertEquals(expected, rentalService.generateCustomerStatement(customer));
     }
 
     @Test
@@ -47,7 +56,7 @@ class CustomerTest {
                 "\tNew Release\t6.0\n" +
                 "Amount owed is 6.0\n" +
                 "You earned 2 frequent renter points";
-        assertEquals(expected, customer.buildStatement());
+        assertEquals(expected, rentalService.generateCustomerStatement(customer));
     }
 
     @Test
@@ -57,7 +66,7 @@ class CustomerTest {
                 "\tChildren's Movie\t3.0\n" +
                 "Amount owed is 3.0\n" +
                 "You earned 1 frequent renter points";
-        assertEquals(expected, customer.buildStatement());
+        assertEquals(expected, rentalService.generateCustomerStatement(customer));
     }
 
     @Test
@@ -71,6 +80,6 @@ class CustomerTest {
                 "\tChildren's Movie\t3.0\n" +
                 "Amount owed is 12.5\n" +
                 "You earned 4 frequent renter points";
-        assertEquals(expected, customer.buildStatement());
+        assertEquals(expected, rentalService.generateCustomerStatement(customer));
     }
 }
