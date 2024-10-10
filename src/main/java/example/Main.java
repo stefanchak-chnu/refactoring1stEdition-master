@@ -1,21 +1,18 @@
 package example;
 
-import java.util.List;
-
-import static example.Movie.MovieType.*;
 
 public class Main {
-    public static final Movie REMBO = new Movie("Rembo", REGULAR);
-    public static final Movie LOTR = new Movie("Lord of the Rings", NEW_RELEASE);
-    public static final Movie HARRY_POTTER = new Movie("Harry Potter", CHILDRENS);
-
     public static void main(String[] args) {
-        List<Rental> rentals = List.of(new Rental(REMBO, 1),
-                new Rental(LOTR, 4),
-                new Rental(HARRY_POTTER, 5));
+        Customer customer = new Customer("John Doe");
 
-        String statement = new Customer("John Doe", rentals).statement();
+        Movie movie1 = new Movie("The Shawshank Redemption", MovieType.REGULAR);
+        Movie movie2 = new Movie("Inception", MovieType.NEW_RELEASE);
+        Movie movie3 = new Movie("Toy Story", MovieType.CHILDRENS);
 
-        System.out.println(statement);
+        customer.addRental(new Rental(movie1, 3));
+        customer.addRental(new Rental(movie2, 2));
+        customer.addRental(new Rental(movie3, 4));
+
+        System.out.println(customer.buildStatement());
     }
 }
