@@ -1,10 +1,12 @@
 package example;
 
+import example.movie.ChildrensMovie;
+import example.movie.NewReleaseMovie;
+import example.movie.RegularMovie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static example.MovieType.*;
 
 class CustomerTest {
 
@@ -30,7 +32,7 @@ class CustomerTest {
 
     @Test
     void testBuildStatementWithOneRegularMovie() {
-        customer.addRental(new Rental(new Movie("Regular Movie", REGULAR), 3));
+        customer.addRental(new Rental(new RegularMovie("Regular Movie"), 3));
         String expected = "Rental Record for John Doe\n" +
                 "\tRegular Movie\t3.5\n" +
                 "Amount owed is 3.5\n" +
@@ -40,7 +42,7 @@ class CustomerTest {
 
     @Test
     void testBuildStatementWithOneNewReleaseMovie() {
-        customer.addRental(new Rental(new Movie("New Release", NEW_RELEASE), 2));
+        customer.addRental(new Rental(new NewReleaseMovie("New Release"), 2));
         String expected = "Rental Record for John Doe\n" +
                 "\tNew Release\t6.0\n" +
                 "Amount owed is 6.0\n" +
@@ -50,7 +52,7 @@ class CustomerTest {
 
     @Test
     void testBuildStatementWithOneChildrensMovie() {
-        customer.addRental(new Rental(new Movie("Children's Movie", CHILDRENS), 4));
+        customer.addRental(new Rental(new ChildrensMovie("Children's Movie"), 4));
         String expected = "Rental Record for John Doe\n" +
                 "\tChildren's Movie\t3.0\n" +
                 "Amount owed is 3.0\n" +
@@ -60,9 +62,9 @@ class CustomerTest {
 
     @Test
     void testBuildStatementWithMultipleMovies() {
-        customer.addRental(new Rental(new Movie("Regular Movie", REGULAR), 3));
-        customer.addRental(new Rental(new Movie("New Release", NEW_RELEASE), 2));
-        customer.addRental(new Rental(new Movie("Children's Movie", CHILDRENS), 4));
+        customer.addRental(new Rental(new RegularMovie("Regular Movie"), 3));
+        customer.addRental(new Rental(new NewReleaseMovie("New Release"), 2));
+        customer.addRental(new Rental(new ChildrensMovie("Children's Movie"), 4));
         String expected = "Rental Record for John Doe\n" +
                 "\tRegular Movie\t3.5\n" +
                 "\tNew Release\t6.0\n" +

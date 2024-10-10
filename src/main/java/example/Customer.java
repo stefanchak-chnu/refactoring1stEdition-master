@@ -42,7 +42,7 @@ public class Customer {
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
 
         for (Rental rental : rentals) {
-            result.append("\t").append(rental.movie().title()).append("\t")
+            result.append("\t").append(rental.movie().getTitle()).append("\t")
                     .append(rental.getCharge()).append("\n");
         }
 
